@@ -1,3 +1,6 @@
 [submodule "References/TShock"]
 	path = References/TShock
 	url = https://github.com/NyxStudios/TShock.git
+[submodule "References/TerrariaAPI-Server"]
+	path = References/TerrariaAPI-Server
+	url = https://github.com/Deathmax/TerrariaAPI-Server.git
