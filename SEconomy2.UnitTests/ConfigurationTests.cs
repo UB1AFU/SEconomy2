@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace SEconomy2.UnitTests {
 	[TestClass]
@@ -148,6 +149,8 @@ namespace SEconomy2.UnitTests {
 			JObject o = JObject.Parse(jsonBlob);
 
 			Assert.IsInstanceOfType(o.SelectToken("$"), typeof(JObject));
+			Assert.AreEqual(o["currency configuration"].Children().Count(), 2);
+
 		}
 
 		[TestMethod]
