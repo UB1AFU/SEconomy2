@@ -28,30 +28,19 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Common, Version=4.0.38.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ServiceStack.Common.4.0.38\lib\net40\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\packages\ServiceStack.Interfaces.4.0.38\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Redis">
-      <HintPath>..\packages\ServiceStack.Redis.4.0.30\lib\net40\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.4.0.38\lib\net40\ServiceStack.Text.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationException.cs" />
+    <Compile Include="Extensions\TSPlayer.EconomyExtensions.cs" />
     <Compile Include="Forms\Controls\CCurrencySetupControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,11 +59,21 @@
     <Compile Include="Forms\CSEconomySetupWnd.Designer.cs">
       <DependentUpon>CSEconomySetupWnd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Framework\Account.cs" />
+    <Compile Include="Framework\AccountProvider.cs" />
+    <Compile Include="Framework\Attributes\AccountProviderAttribute.cs" />
+    <Compile Include="Framework\Attributes\CurrencyAttribute.cs" />
+    <Compile Include="Framework\Attributes\EconomyProviderAttribute.cs" />
+    <Compile Include="Framework\Currency.cs" />
+    <Compile Include="Framework\EconomyProvider.cs" />
+    <Compile Include="Framework\Provider.cs" />
+    <Compile Include="Framework\Testing\ILintable.cs" />
     <Compile Include="Packets\DamageNPC.cs" />
     <Compile Include="Packets\PacketMarshal.cs" />
     <Compile Include="Packets\StrikeNPC.cs" />
     <Compile Include="Packets\TerrariaPacket.cs" />
     <Compile Include="Packets\UpdateNPC.cs" />
+    <Compile Include="SEconomy.cs" />
     <Compile Include="SEconomyPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Subsystems\WorldWatchdog\WorldWatchdog.cs" />
@@ -90,6 +89,22 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Currency\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\Controls\CRankTreeSetupControl.resx">
+      <DependentUpon>CRankTreeSetupControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CSEconomySetupWnd.resx">
+      <DependentUpon>CSEconomySetupWnd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Configuration.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\References\TerrariaAPI-Server\TerrariaAPI-Server.csproj">
       <Project>{549a7941-d9c9-4544-bac8-d9eeeab4d777}</Project>
       <Name>TerrariaAPI-Server</Name>
@@ -99,13 +114,13 @@
       <Name>TShockAPI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <EmbeddedResource Include="Forms\Controls\CRankTreeSetupControl.resx">
-      <DependentUpon>CRankTreeSetupControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CSEconomySetupWnd.resx">
-      <DependentUpon>CSEconomySetupWnd.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <DotNetNamingPolicy DirectoryNamespaceAssociation="PrefixedHierarchical" ResourceNamePolicy="MSBuild" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
 </Project>

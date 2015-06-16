@@ -1,6 +1,15 @@
 ﻿<Properties StartupItem="SEconomy2Plugin/SEconomy2Plugin.csproj">
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SEconomy2Plugin/SEconomy.cs">
+    <Files>
+      <File FileName="SEconomy2Plugin/configuration.json" Line="1" Column="1" />
+      <File FileName="SEconomy2Plugin/Currency/CurrencyServer.cs" Line="1" Column="1" />
+      <File FileName="SEconomy2Plugin/SEconomy.cs" Line="1" Column="1" />
+      <File FileName="SEconomy2Plugin/Logging/Log.cs" Line="1" Column="1" />
+      <File FileName="SEconomy2Plugin/Subsystems/WorldWatchdog/WorldWatchdogEvents.cs" Line="1" Column="1" />
+      <File FileName="SEconomy2Plugin/Subsystems/WorldWatchdog/WorldWatchdog.cs" Line="50" Column="38" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

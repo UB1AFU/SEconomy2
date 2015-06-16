@@ -23,58 +23,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
+using System.Xml.Linq;
 
-namespace SEconomy2Plugin
-{
-	[ApiVersion(1, 16)]
-	public class SEconomyPlugin : TerrariaPlugin
-	{
+namespace SEconomy2Plugin.Framework {
 
-		public override string Author
+	/// <summary>
+	/// Abstract class to indicate a disposable SEconomy 2 framework provider
+	/// that is able to be dynamically configured from an XML element.
+	/// </summary>
+	public abstract class Provider : IDisposable {
+		
+		/// <summary>
+		/// Gets the configuration element for this provider
+		/// </summary>
+		protected XElement Configuration { get; set; }
+
+		/// <summary>
+		/// Gets the instance of SEconomy
+		/// </summary>
+		protected SEconomy SEconomy { get; set; }
+
+		protected Provider(SEconomy instance, XElement configElement)
 		{
-			get
-			{
-				return "Wolfje";
+			this.SEconomy = instance;
+			this.Configuration = configElement;
+		}
+
+		~Provider()
+		{
+			Dispose(false);
+		}
+
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing) {
+				SEconomy = null;
+				Configuration = null;
 			}
-		}
-
-		public override string Description
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-
-		public override string Name
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-		public override Version Version
-		{
-			get
-			{
-				return GetType().Assembly.GetName().Version;
-			}
-		}
-
-		public SEconomyPlugin(Terraria.Main game)
-			: base(game)
-		{
-
-		}
-
-		public SEconomyPlugin()
-			: base(null)
-		{
-		}
-
-		public override void Initialize()
-		{
 		}
 	}
 }

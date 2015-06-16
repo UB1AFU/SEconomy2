@@ -23,58 +23,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
+using System.Xml;
+using System.Xml.Linq;
 
-namespace SEconomy2Plugin
+namespace SEconomy2Plugin.Configuration
 {
-	[ApiVersion(1, 16)]
-	public class SEconomyPlugin : TerrariaPlugin
+	public class ConfigurationException : Exception
 	{
+		public IXmlLineInfo LineInfo { get; protected set; }
 
-		public override string Author
+		public ConfigurationException(XElement elem, string message)
+			: base("Configuration error at " + (elem as IXmlLineInfo).LineNumber + ": " + message)
 		{
-			get
-			{
-				return "Wolfje";
-			}
+			IXmlLineInfo info = elem as IXmlLineInfo;
+			LineInfo = info;
 		}
 
-		public override string Description
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-
-		public override string Name
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-		public override Version Version
-		{
-			get
-			{
-				return GetType().Assembly.GetName().Version;
-			}
-		}
-
-		public SEconomyPlugin(Terraria.Main game)
-			: base(game)
-		{
-
-		}
-
-		public SEconomyPlugin()
-			: base(null)
-		{
-		}
-
-		public override void Initialize()
-		{
-		}
 	}
 }

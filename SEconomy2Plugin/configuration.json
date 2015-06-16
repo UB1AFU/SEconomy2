@@ -9,6 +9,10 @@
                 "pvp earnable": true,
                 "pvp loseable": true
             },
+            "history properties": {
+                "history enabled": false,
+                "keep history for": "24h"
+            },
             "singular mode properties": {
                 "currency name": "soul shard",
                 "plural currency name": "soul shards",
@@ -47,6 +51,10 @@
                 "pvp earnable": true,
                 "pvp loseable": false
             },
+            "history properties": {
+                "history enabled": false,
+                "keep history for": "24h"
+            },
             "singular mode properties": {
                 "currency name": "exp",
                 "plural currency name": "exp",
@@ -80,7 +88,8 @@
     "redis configuration": {
         "database host": "127.0.0.1",
         "port": 6379,
-        "database index": 0
+        "database index": 0,
+        "authentication key": ""
     },
     "world economy configuration": {
         "globally enabled": true,

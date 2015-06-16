@@ -23,58 +23,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
 
-namespace SEconomy2Plugin
-{
-	[ApiVersion(1, 16)]
-	public class SEconomyPlugin : TerrariaPlugin
-	{
-
-		public override string Author
-		{
-			get
-			{
-				return "Wolfje";
-			}
-		}
-
-		public override string Description
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-
-		public override string Name
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-		public override Version Version
-		{
-			get
-			{
-				return GetType().Assembly.GetName().Version;
-			}
-		}
-
-		public SEconomyPlugin(Terraria.Main game)
-			: base(game)
-		{
-
-		}
-
-		public SEconomyPlugin()
-			: base(null)
-		{
-		}
-
-		public override void Initialize()
-		{
-		}
+namespace SEconomy2Plugin.Framework {
+	public class EconomyProvider {
 	}
 }

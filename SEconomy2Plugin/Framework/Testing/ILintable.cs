@@ -23,58 +23,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
 
-namespace SEconomy2Plugin
+namespace SEconomy2Plugin.Framework.Testing
 {
-	[ApiVersion(1, 16)]
-	public class SEconomyPlugin : TerrariaPlugin
+	/// <summary>
+	/// Indicates that the class provides implementations for the
+	/// configuration testing system to make sure it has all the
+	/// information it needs to operate properly.
+	/// </summary>
+	public interface ILintable
 	{
 
-		public override string Author
-		{
-			get
-			{
-				return "Wolfje";
-			}
-		}
+		/// <summary>
+		/// Forces an instance to lint its configuration, throwing an
+		/// exception when configuration parsing fails.  The function
+		/// must throw ConfuigurationException objects when linting
+		/// a provided configuration failed.
+		/// </summary>
+		void Lint();
 
-		public override string Description
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-
-		public override string Name
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-		public override Version Version
-		{
-			get
-			{
-				return GetType().Assembly.GetName().Version;
-			}
-		}
-
-		public SEconomyPlugin(Terraria.Main game)
-			: base(game)
-		{
-
-		}
-
-		public SEconomyPlugin()
-			: base(null)
-		{
-		}
-
-		public override void Initialize()
-		{
-		}
 	}
 }

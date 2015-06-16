@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SEconomyConfiguration>
+
+  <SEconomy>
+
+    <Configuration>
+
+      <Currencies>
+
+        <Currency Template="SingularCurrency1" Enabled="true" AccountProvider="InMemory1">
+          <EconomyProviders>
+            <EconomyProvider Template="GainsFromMobs1" Enabled="true"/>
+            <EconomyProvider Template="PvpGains1" Enabled="true"/>
+          </EconomyProviders>
+        </Currency>
+
+      </Currencies>
+
+    </Configuration>
+
+  </SEconomy>
+  
+
+  <!-- Template Section -->
+
+  <Templates>
+    
+    <Currencies>
+
+      <Currency TemplateName="EXPCurrency" Implementation="ExperienceCurrency">
+        <Configuration>
+          <History Enabled="false" />
+        </Configuration>
+      </Currency>
+
+      <Currency TemplateName="SingularCurrency1" Implementation="SingularCurrency">
+        <Configuration>
+          <Display CurrencyName="Soul Shards" ValueFormat="N0" Abbreviation="ss" />
+          <History KeepHistory="true" />
+        </Configuration>
+      </Currency>
+
+      <Currency TemplateName="QuadrantCurrency1" Implementation="QuadrantCurrency">
+        <Configuration>
+          <Quadrants>
+            <Quadrant1 FullName="Copper" ShortName="copper" Abbreviation="c" />
+            <Quadrant2 FullName="Silver" ShortName="silver" Abbreviation="s" />
+            <Quadrant3 FullName="Gold" ShortName="gold" Abbreviation="g" />
+            <Quadrant4 FullName="Platinum" ShortName="platinum" Abbreviation="p" />
+          </Quadrants>
+          <History KeepHistory="false"/>
+        </Configuration>
+      </Currency>
+
+    </Currencies>
+
+    <AccountProviders>
+
+      <AccountProvider TemplateName="SQLProvider1" Implementation="MySQLAccountProvider">
+        <Configuration>
+          <Connection Host="dbhost" Port="3306" Schema="SEconomy" />
+        </Configuration>
+      </AccountProvider>
+
+      <AccountProvider TemplateName="InMemory1" Implementation="InMemoryAccountProvider">
+        <Configuration>
+          <Limits MaxHistory="10000"/>
+        </Configuration>
+      </AccountProvider>
+
+      <AccountProvider TemplateName="XMLFile1" Implementation="XMLAccountProvider">
+        <Configuration>
+          <XMLFile Path="tshock\seconomy\history.xml.gz" Compressed="true"/>
+          <Limits MaxHistory="10000"/>
+        </Configuration>
+      </AccountProvider>
+
+    </AccountProviders>
+
+    <EconomyProviders>
+
+      <EconomyProvider TemplateName="GainsFromMobs1" Implementation="MobEconomyProvider">
+        <Configuration>
+          <MobGains NPCGainFactor="1.0" BossGainFactor="1.0" ExcludeGroup="seconomy2.mobeconomy.excludegains">
+            <Overrides>
+              <Override NPCID="1" GainFactor="0" />
+              <Override NPCID="49" GainFactor="0" />
+              <Override NPCID="74" GainFactor="0" />
+              <Override NPCID="85" GainFactor="0" />
+              <Override NPCID="67" GainFactor="0" />
+              <Override NPCID="55" GainFactor="0" />
+              <Override NPCID="63" GainFactor="0" />
+              <Override NPCID="58" GainFactor="0" />
+              <Override NPCID="57" GainFactor="0" />
+              <Override NPCID="47" GainFactor="0" />
+              <Override NPCID="65" GainFactor="0" />
+              <Override NPCID="21" GainFactor="0" />
+            </Overrides>
+          </MobGains>
+        </Configuration>
+      </EconomyProvider>
+
+      <EconomyProvider TemplateName="PvpGains1" Implementation="PVPEconomyProvider">
+        <Configuration>
+          <PVPLoss Factor="0.01" ExcludeGroup="seconomy2.pvpeconomy.cheatdeath"/>
+        </Configuration>
+      </EconomyProvider>
+
+      <EconomyProvider TemplateName="LevelSystem" Implementation="LevelSystemEconomyProvider">
+        <Configuration>
+          <Level Min="0" Max="100" GroupPrefix="seconomy2.level." CurveFactor="12.4000000000" CanDowngrade="false" />
+          <Messages>
+            <LevelUpMessage Text="$NAME has leveled up to $LEVEL!" Colour="255, 128, 0" Enabled="true"/>
+          </Messages>
+        </Configuration>
+      </EconomyProvider>
+      
+    </EconomyProviders>
+    
+  </Templates>
+
+</SEconomyConfiguration>

@@ -140,7 +140,7 @@ namespace SEconomy2Plugin.Subsystems.WorldWatchdog {
 					playerDamageList = DamageDictionary[NPC];
 
 					if (DamageDictionary.Remove(NPC) == false) {
-						TShockAPI.Log.ConsoleError("seconomy: world economy: Remove of NPC after reward failed.  This is an internal error.");
+						TShock.Log.ConsoleError("seconomy: world economy: Remove of NPC after reward failed.  This is an internal error.");
 					}
 				}
 			}

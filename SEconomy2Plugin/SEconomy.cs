@@ -18,63 +18,39 @@
  * along with SEconomy2.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
+using System.IO;
+using TShockAPI;
 
-namespace SEconomy2Plugin
-{
-	[ApiVersion(1, 16)]
-	public class SEconomyPlugin : TerrariaPlugin
-	{
+namespace SEconomy2Plugin {
+	public class SEconomy : IDisposable {
 
-		public override string Author
+		public SEconomy()
 		{
-			get
-			{
-				return "Wolfje";
+		}
+
+		#region "IDisposable"
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		~SEconomy()
+		{
+			Dispose(false);
+		}
+
+		public virtual void Dispose(bool disposing)
+		{
+			if (disposing) {
 			}
 		}
-
-		public override string Description
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-
-		public override string Name
-		{
-			get
-			{
-				return "SEconomy 2.0";
-			}
-		}
-		public override Version Version
-		{
-			get
-			{
-				return GetType().Assembly.GetName().Version;
-			}
-		}
-
-		public SEconomyPlugin(Terraria.Main game)
-			: base(game)
-		{
-
-		}
-
-		public SEconomyPlugin()
-			: base(null)
-		{
-		}
-
-		public override void Initialize()
-		{
-		}
+		#endregion
 	}
 }
